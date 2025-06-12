@@ -1,0 +1,506 @@
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Roboto', sans-serif;
+}
+
+body {
+  background-color: #f9f9f9;
+  color: #333;
+  line-height: 1.6;
+  scroll-behavior: smooth;
+}
+
+/* Container */
+.container {
+  width: 90%;
+  max-width: 1200px;
+  margin: auto;
+}
+
+/* Navbar */
+.navbar {
+  background-color: #ffffff;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  padding: 1rem 0;
+  position: fixed;
+  width: 100%;
+  z-index: 999;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  display: flex;
+  justify-content: center;
+}
+
+.navbar-scrolled {
+  background-color: #007BFF;
+  box-shadow: 0 2px 12px rgba(0, 123, 255, 0.6);
+}
+
+.nav-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.logo img {
+  width: 150px;
+  height: auto;
+  transition: transform 0.3s ease;
+  cursor: pointer;
+}
+
+.logo img:hover {
+  transform: scale(1.1);
+}
+
+nav {
+  position: relative;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+  transition: max-height 0.4s ease;
+}
+
+.nav-links li a {
+  text-decoration: none;
+  color: #333;
+  font-weight: 700;
+  transition: color 0.3s ease, transform 0.3s ease;
+  cursor: pointer;
+}
+
+.navbar-scrolled .nav-links li a {
+  color: #fff;
+}
+
+.nav-links li a:hover {
+  color: #ffeb3b;
+  transform: scale(1.05);
+}
+
+/* Dropdown */
+.dropdown {
+  position: relative;
+}
+
+.dropbtn::after {
+  content: '';
+  margin-left: 6px;
+  border: solid #333;
+  border-width: 0 2px 2px 0;
+  display: inline-block;
+  padding: 3px;
+  transform: rotate(45deg);
+  vertical-align: middle;
+  transition: border-color 0.3s ease;
+}
+
+.navbar-scrolled .dropbtn::after {
+  border-color: #fff;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  
+  min-width: 140px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+  top: 120%;
+  left: 0;
+  z-index: 1000;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+  opacity: 0;
+  visibility: hidden;
+}
+
+.dropdown-content li {
+  padding: 0.8rem 1rem;
+  white-space: nowrap;
+}
+
+.dropdown-content li a {
+  color: #333;
+  font-weight: 500;
+  display: block;
+}
+
+.dropdown-content li a:hover {
+  background-color: #007BFF;
+  color: #fff;
+  border-radius: 4px;
+}
+
+.dropdown:hover .dropdown-content,
+.dropdown:focus-within .dropdown-content {
+  display: block;
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Hamburger */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: space-around;
+  width: 28px;
+  height: 22px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  z-index: 1100;
+}
+
+.bar {
+  width: 100%;
+  height: 3px;
+  background-color: #333;
+  border-radius: 2px;
+  transition: all 0.3s ease;
+}
+
+.navbar-scrolled .bar {
+  background-color: #fff;
+}
+
+.toggle .bar:nth-child(1) {
+  transform: rotate(45deg) translate(5px, 5px);
+}
+
+.toggle .bar:nth-child(2) {
+  opacity: 0;
+}
+
+.toggle .bar:nth-child(3) {
+  transform: rotate(-45deg) translate(5px, -5px);
+}
+
+/* Mobile Navigation */
+@media (max-width: 768px) {
+  .nav-links {
+    position: fixed;
+    top: 70px;
+    right: 0;
+    background-color: #007BFF;
+    height: calc(100vh - 70px);
+    width: 200px;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 1rem;
+    gap: 1rem;
+    transform: translateX(100%);
+    transition: transform 0.3s ease;
+    overflow-y: auto;
+  }
+
+  .nav-links.nav-active {
+    transform: translateX(0);
+  }
+
+  .nav-links li {
+    width: 100%;
+  }
+
+  .nav-links li a {
+    color: white;
+    font-size: 1.2rem;
+    width: 100%;
+  }
+
+  .dropdown-content {
+    position: static;
+    background-color: transparent;
+    box-shadow: none;
+    opacity: 1 !important;
+    visibility: visible !important;
+    padding-left: 1rem;
+  }
+
+  .dropdown-content li a:hover {
+    background-color: rgba(255, 255, 255, 0.3);
+    border-radius: 0;
+  }
+
+  .hamburger {
+    display: flex;
+  }
+}
+
+/* Hero Section */
+.hero {
+  background: linear-gradient(135deg, #007BFF, #00C6FF);
+  color: #fff;
+  padding: 8rem 0 4rem;
+  text-align: center;
+  overflow: hidden;
+  min-height: 70vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.hero h1 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  animation-delay: 0.4s;
+}
+
+.hero h1 span {
+  font-weight: 700;
+  color: #ffeb3b;
+}
+
+.hero p {
+  font-size: 1.2rem;
+  margin-bottom: 2rem;
+  opacity: 0.9;
+  animation-delay: 0.7s;
+}
+
+.btn.primary {
+  padding: 1rem 2rem;
+  background-color: #fff;
+  color: #007BFF;
+  text-decoration: none;
+  border-radius: 5px;
+  font-weight: bold;
+  transition: background 0.3s ease, transform 0.3s ease, box-shadow 0.4s ease;
+  display: inline-block;
+  cursor: pointer;
+  user-select: none;
+  animation-delay: 1s;
+}
+
+.btn.primary:hover {
+  background-color: #e6e6e6;
+  transform: scale(1.07);
+  box-shadow: 0 0 15px #ffeb3b;
+}
+
+/* Download Section */
+.download-section {
+  padding: 4rem 0;
+  background-color: #ffffff;
+}
+
+.download-section h2 {
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 2rem;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+}
+
+.item {
+  background-color: #f1f1f1;
+  padding: 1.5rem;
+  border-radius: 10px;
+  text-align: center;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  opacity: 0;
+  animation-fill-mode: forwards;
+}
+
+.lang {
+  font-weight: 700;
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+}
+
+.buttons {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.bluebutton,
+.greenbutton {
+  padding: 0.7rem 1.2rem;
+  border: none;
+  border-radius: 5px;
+  color: #fff;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.2s ease;
+  user-select: none;
+}
+
+.bluebutton {
+  background-color: #007BFF;
+}
+
+.bluebutton:hover {
+  background-color: #0056b3;
+  transform: scale(1.05);
+}
+
+.greenbutton {
+  background-color: #28a745;
+}
+
+.greenbutton:hover {
+  background-color: #1c7c31;
+  transform: scale(1.05);
+}
+
+/* Options Section */
+.options-section {
+  background-color: #f9f9f9;
+  padding: 3rem 1rem 5rem;
+  border-radius: 12px;
+  margin-bottom: 4rem;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+}
+
+.options-section h2 {
+  text-align: center;
+  margin-bottom: 2rem;
+  font-size: 2rem;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+label {
+  font-weight: 600;
+  margin-bottom: 0.3rem;
+}
+
+select,
+input[type="range"] {
+  padding: 0.5rem;
+  font-size: 1rem;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  cursor: pointer;
+  transition: border-color 0.3s ease;
+}
+
+select:focus,
+input[type="range"]:focus {
+  outline: none;
+  border-color: #007BFF;
+}
+
+input[type="range"] {
+  width: 100%;
+}
+
+.options-section .btn.primary {
+  align-self: center;
+  width: 150px;
+}
+
+/* Footer */
+footer {
+  background-color: #333;
+  color: #fff;
+  padding: 2rem 0;
+  text-align: center;
+}
+
+footer .socials a {
+  color: #fff;
+  margin: 0 1rem;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+footer .socials a:hover {
+  color: #ffeb3b;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideInBottom {
+  0% {
+    transform: translateY(50px);
+    opacity: 0;
+  }
+
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes pulse {
+
+  0%,
+  100% {
+    transform: scale(1);
+    box-shadow: 0 0 0 rgba(255, 235, 59, 0);
+  }
+
+  50% {
+    transform: scale(1.05);
+    box-shadow: 0 0 8px rgba(255, 235, 59, 0.7);
+  }
+}
+
+/* Animation utility classes */
+.fade-in {
+  animation: fadeIn 1s ease forwards;
+}
+
+.fade-in-delay-1 {
+  animation: fadeIn 1s ease 0.3s forwards;
+}
+
+.fade-in-delay-2 {
+  animation: fadeIn 1s ease 0.6s forwards;
+}
+
+.fade-in-delay-3 {
+  animation: fadeIn 1s ease 0.9s forwards;
+}
+
+.fade-in-delay-4 {
+  animation: fadeIn 1s ease 1.2s forwards;
+}
+
+.slide-in-bottom {
+  animation: slideInBottom 0.8s ease forwards;
+}
+
+.pulse-animation {
+  animation: pulse 2s infinite;
+}
+
+.form {
+  height: 10vh;
+  width: 20w;
+  background-color: #ccc;
+  color: black;
+  border-color: 2px solid black;
+  border-radius: 4px;
+  margin-left: 500px;
+  margin-top: 200px;
+  margin-bottom: 200px;
+
+}

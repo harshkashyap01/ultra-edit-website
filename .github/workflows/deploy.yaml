@@ -3,13 +3,13 @@ name: Deploy UltraEdit Web
 on:
   push:
     branches:
-      - main  # Trigger only when pushing to main
-  workflow_dispatch:  # Also allow manual runs from GitHub UI
+      - main  # Trigger only on push to the main branch
+  workflow_dispatch:  # Allow manual trigger
 
 permissions:
   contents: read
   pages: write
-  id-token: write
+  id-token: write  # Required for GitHub Pages deployment
 
 jobs:
   build-and-deploy:
@@ -19,16 +19,18 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Setup Pages
+      - name: Setup GitHub Pages
         uses: actions/configure-pages@v4
 
       - name: Upload website files
         uses: actions/upload-pages-artifact@v3
         with:
-          path: .  # Upload everything in current directory (your HTML, CSS, JS)
+          path: ./  # Make sure your index.html is here
 
       - name: Deploy to GitHub Pages
+        id: deployment
         uses: actions/deploy-pages@v4
+
 
 
   
